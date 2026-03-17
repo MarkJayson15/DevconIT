@@ -1025,8 +1025,87 @@
       </div>
     </section>
     <!-- SERVICES -->
-    <section id="services" class="w-full py-24 px-6">
-      <div class="max-w-7xl mx-auto">
+    <section id="services" class="w-full py-24 px-6 relative overflow-hidden">
+      <div
+        class="absolute top-20 left-10 w-96 h-96 rounded-full float-anim"
+        style="
+          background: radial-gradient(
+            circle,
+            rgba(0, 229, 160, 0.1),
+            transparent 70%
+          );
+          filter: blur(40px);
+        "
+      ></div>
+      <div
+        class="absolute bottom-20 right-10 w-80 h-80 rounded-full float-anim-delay"
+        style="
+          background: radial-gradient(
+            circle,
+            rgba(0, 180, 216, 0.1),
+            transparent 70%
+          );
+          filter: blur(40px);
+        "
+      ></div>
+      <svg
+        class="absolute inset-0 w-full h-full"
+        style="pointer-events: none; opacity: 0.4"
+        preserveaspectratio="none"
+      >
+        <defs>
+          <lineargradient
+            id="serviceLineGrad"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" style="stop-color: #00e5a0; stop-opacity: 0.1" />
+            <stop
+              offset="100%"
+              style="stop-color: #00b4d8; stop-opacity: 0.05"
+            />
+          </lineargradient>
+        </defs>
+        <line
+          x1="0"
+          y1="25%"
+          x2="100%"
+          y2="25%"
+          stroke="url(#serviceLineGrad)"
+          stroke-width="1"
+          style="animation: slideRight 20s linear infinite"
+        />
+        <line
+          x1="0"
+          y1="75%"
+          x2="100%"
+          y2="75%"
+          stroke="url(#serviceLineGrad)"
+          stroke-width="1"
+          style="animation: slideRight 25s linear infinite 5s"
+        />
+        <line
+          x1="15%"
+          y1="0"
+          x2="15%"
+          y2="100%"
+          stroke="url(#serviceLineGrad)"
+          stroke-width="1"
+          style="animation: slideDown 20s linear infinite"
+        />
+        <line
+          x1="85%"
+          y1="0"
+          x2="85%"
+          y2="100%"
+          stroke="url(#serviceLineGrad)"
+          stroke-width="1"
+          style="animation: slideDown 25s linear infinite 5s"
+        />
+      </svg>
+      <div class="max-w-7xl mx-auto relative z-10">
         <p
           class="text-sm font-semibold tracking-widest uppercase mb-3"
           style="color: #00e5a0"
@@ -1049,7 +1128,7 @@
     <!-- ABOUT -->
     <section
       id="about"
-      class="w-full py-24 px-6"
+      class="w-full py-24 px-6 relative overflow-hidden"
       style="
         background: linear-gradient(
           180deg,
@@ -1058,7 +1137,87 @@
         );
       "
     >
-      <div class="max-w-7xl mx-auto">
+      <div
+        class="absolute top-32 right-20 w-80 h-80 rounded-full"
+        style="
+          background: radial-gradient(
+            circle,
+            rgba(0, 180, 216, 0.08),
+            transparent 70%
+          );
+          filter: blur(40px);
+          animation: float 8s ease-in-out 1s infinite;
+        "
+      ></div>
+      <div
+        class="absolute bottom-32 left-20 w-96 h-96 rounded-full float-anim-delay"
+        style="
+          background: radial-gradient(
+            circle,
+            rgba(0, 229, 160, 0.08),
+            transparent 70%
+          );
+          filter: blur(40px);
+        "
+      ></div>
+      <svg
+        class="absolute inset-0 w-full h-full"
+        style="pointer-events: none; opacity: 0.3"
+        preserveaspectratio="none"
+      >
+        <defs>
+          <lineargradient
+            id="aboutLineGrad"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" style="stop-color: #00e5a0; stop-opacity: 0.08" />
+            <stop
+              offset="100%"
+              style="stop-color: #00b4d8; stop-opacity: 0.04"
+            />
+          </lineargradient>
+        </defs>
+        <line
+          x1="0"
+          y1="20%"
+          x2="100%"
+          y2="20%"
+          stroke="url(#aboutLineGrad)"
+          stroke-width="1"
+          style="animation: slideRight 25s linear infinite"
+        />
+        <line
+          x1="0"
+          y1="80%"
+          x2="100%"
+          y2="80%"
+          stroke="url(#aboutLineGrad)"
+          stroke-width="1"
+          style="animation: slideRight 30s linear infinite 7s"
+        />
+        <line
+          x1="25%"
+          y1="0"
+          x2="25%"
+          y2="100%"
+          stroke="url(#aboutLineGrad)"
+          stroke-width="1"
+          style="animation: slideDown 25s linear infinite"
+        />
+        <line
+          x1="75%"
+          y1="0"
+          x2="75%"
+          y2="100%"
+          stroke="url(#aboutLineGrad)"
+          stroke-width="1"
+          style="animation: slideDown 30s linear infinite 7s"
+        />
+      </svg>
+      <div class="max-w-7xl mx-auto relative z-10">
         <p
           class="text-sm font-semibold tracking-widest uppercase mb-3"
           style="color: #00e5a0"
@@ -1223,8 +1382,81 @@
       </div>
     </section>
     <!-- TEAM -->
-    <section id="team" class="w-full py-24 px-6">
-      <div class="max-w-7xl mx-auto">
+    <section id="team" class="w-full py-24 px-6 relative overflow-hidden">
+      <div
+        class="absolute top-20 right-10 w-96 h-96 rounded-full float-anim"
+        style="
+          background: radial-gradient(
+            circle,
+            rgba(0, 229, 160, 0.1),
+            transparent 70%
+          );
+          filter: blur(40px);
+        "
+      ></div>
+      <div
+        class="absolute bottom-20 left-10 w-80 h-80 rounded-full float-anim-delay"
+        style="
+          background: radial-gradient(
+            circle,
+            rgba(0, 180, 216, 0.1),
+            transparent 70%
+          );
+          filter: blur(40px);
+        "
+      ></div>
+      <svg
+        class="absolute inset-0 w-full h-full"
+        style="pointer-events: none; opacity: 0.35"
+        preserveaspectratio="none"
+      >
+        <defs>
+          <lineargradient id="teamLineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color: #00b4d8; stop-opacity: 0.1" />
+            <stop
+              offset="100%"
+              style="stop-color: #00e5a0; stop-opacity: 0.05"
+            />
+          </lineargradient>
+        </defs>
+        <line
+          x1="0"
+          y1="30%"
+          x2="100%"
+          y2="30%"
+          stroke="url(#teamLineGrad)"
+          stroke-width="1"
+          style="animation: slideRight 22s linear infinite"
+        />
+        <line
+          x1="0"
+          y1="70%"
+          x2="100%"
+          y2="70%"
+          stroke="url(#teamLineGrad)"
+          stroke-width="1"
+          style="animation: slideRight 28s linear infinite 6s"
+        />
+        <line
+          x1="10%"
+          y1="0"
+          x2="10%"
+          y2="100%"
+          stroke="url(#teamLineGrad)"
+          stroke-width="1"
+          style="animation: slideDown 22s linear infinite"
+        />
+        <line
+          x1="90%"
+          y1="0"
+          x2="90%"
+          y2="100%"
+          stroke="url(#teamLineGrad)"
+          stroke-width="1"
+          style="animation: slideDown 28s linear infinite 6s"
+        />
+      </svg>
+      <div class="max-w-7xl mx-auto relative z-10">
         <p
           class="text-sm font-semibold tracking-widest uppercase mb-3"
           style="color: #00e5a0"
@@ -1243,7 +1475,7 @@
     <!-- CONTACT -->
     <section
       id="contact"
-      class="w-full py-24 px-6"
+      class="w-full py-24 px-6 relative overflow-hidden"
       style="
         background: linear-gradient(
           180deg,
@@ -1252,7 +1484,87 @@
         );
       "
     >
-      <div class="max-w-7xl mx-auto">
+      <div
+        class="absolute top-24 left-20 w-80 h-80 rounded-full"
+        style="
+          background: radial-gradient(
+            circle,
+            rgba(0, 180, 216, 0.1),
+            transparent 70%
+          );
+          filter: blur(40px);
+          animation: float 9s ease-in-out 0.5s infinite;
+        "
+      ></div>
+      <div
+        class="absolute bottom-24 right-20 w-96 h-96 rounded-full float-anim"
+        style="
+          background: radial-gradient(
+            circle,
+            rgba(0, 229, 160, 0.08),
+            transparent 70%
+          );
+          filter: blur(40px);
+        "
+      ></div>
+      <svg
+        class="absolute inset-0 w-full h-full"
+        style="pointer-events: none; opacity: 0.3"
+        preserveaspectratio="none"
+      >
+        <defs>
+          <lineargradient
+            id="contactLineGrad"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" style="stop-color: #00b4d8; stop-opacity: 0.08" />
+            <stop
+              offset="100%"
+              style="stop-color: #00e5a0; stop-opacity: 0.04"
+            />
+          </lineargradient>
+        </defs>
+        <line
+          x1="0"
+          y1="35%"
+          x2="100%"
+          y2="35%"
+          stroke="url(#contactLineGrad)"
+          stroke-width="1"
+          style="animation: slideRight 26s linear infinite"
+        />
+        <line
+          x1="0"
+          y1="65%"
+          x2="100%"
+          y2="65%"
+          stroke="url(#contactLineGrad)"
+          stroke-width="1"
+          style="animation: slideRight 32s linear infinite 8s"
+        />
+        <line
+          x1="20%"
+          y1="0"
+          x2="20%"
+          y2="100%"
+          stroke="url(#contactLineGrad)"
+          stroke-width="1"
+          style="animation: slideDown 26s linear infinite"
+        />
+        <line
+          x1="80%"
+          y1="0"
+          x2="80%"
+          y2="100%"
+          stroke="url(#contactLineGrad)"
+          stroke-width="1"
+          style="animation: slideDown 32s linear infinite 8s"
+        />
+      </svg>
+      <div class="max-w-7xl mx-auto relative z-10">
         <p
           class="text-sm font-semibold tracking-widest uppercase mb-3"
           style="color: #00b4d8"
@@ -1656,17 +1968,18 @@
         grid.innerHTML = team
           .map(
             (t, i) => `
-      <div class="flip-card" style="height:280px;">
+      <div class="flip-card" style="height:320px;">
         <div class="flip-card-inner" style="background:rgba(255,255,255,0.03);border:1px solid ${t.color}18;">
           <div class="flip-card-front" style="background:rgba(255,255,255,0.03);justify-content:center;">
             <div class="team-card-img mx-auto mb-4" style="background:${t.color}18;color:${t.color};overflow:hidden;">
               ${t.image ? `<img src="${t.image}" alt="${t.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="console.error('Image failed to load:', this.src); this.style.background='#e5e7eb'; this.alt='Image unavailable';">` : `<div style="font-size:3rem;">👤</div>`}
             </div>
-            <h3 class="font-bold text-lg" style="color:#fff;">${t.name}</h3>
+            <h3 class="font-bold text-lg text-center" style="color:#fff;">${t.name}</h3>
+            <p class="font-semibold text-sm text-center mt-2" style="color:${t.color};">${t.role}</p>
           </div>
           <div class="flip-card-back" style="background:linear-gradient(135deg, ${t.color}15, ${t.color}08);border:1px solid ${t.color}18;justify-content:center;text-align:center;">
             <div>
-              <p class="font-semibold text-sm" style="color:${t.color};margin-bottom:8px;">${t.role}</p>
+              <p class="font-semibold text-sm mb-3" style="color:${t.color};">${t.role}</p>
               <p class="text-xs" style="color:#cbd5e1;line-height:1.6;">Passionate about creating innovative solutions and delivering excellent results for our clients.</p>
             </div>
           </div>
@@ -1912,7 +2225,7 @@
           if (b) {
             var d = b.createElement("script");
             d.innerHTML =
-              "window.__CF$cv$params={r:'9ddc731ff486fed0',t:'MTc3Mzc1NTI0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+              "window.__CF$cv$params={r:'9ddc78cd9663fed0',t:'MTc3Mzc1NTQ4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }

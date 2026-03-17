@@ -40,13 +40,153 @@
       }
 
       body.light-mode {
-        --bg-primary: #ffffff;
-        --bg-secondary: #f8fafc;
-        --text-primary: #1e293b;
-        --text-secondary: #64748b;
-        --accent-1: #00b86f;
-        --accent-2: #0084d4;
-        --border-color: rgba(0, 132, 212, 0.1);
+        --bg-primary: #f9fafb !important;
+        --bg-secondary: #ffffff !important;
+        --text-primary: #0f172a !important;
+        --text-secondary: #475569 !important;
+        --accent-1: #2563eb !important;
+        --accent-2: #0ea5e9 !important;
+        --border-color: rgba(37, 99, 235, 0.2) !important;
+      }
+
+      body.light-mode {
+        background: #f9fafb !important;
+        color: #0f172a !important;
+      }
+
+      body.light-mode nav {
+        background: rgba(255, 255, 255, 0.98) !important;
+        border-bottom: 2px solid #e5e7eb !important;
+        backdrop-filter: blur(20px) !important;
+        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08) !important;
+      }
+
+      body.light-mode nav span {
+        color: #0f172a !important;
+      }
+
+      body.light-mode nav span span {
+        color: #2563eb !important;
+      }
+
+      body.light-mode nav a {
+        color: #475569 !important;
+      }
+
+      body.light-mode nav a[href="#home"] {
+        color: #2563eb !important;
+        font-weight: 600 !important;
+      }
+
+      body.light-mode #home {
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #f0f9ff 25%,
+          #eff6ff 50%,
+          #ffffff 100%
+        ) !important;
+      }
+
+      body.light-mode #home h1 {
+        color: #0f172a !important;
+      }
+
+      body.light-mode #home p {
+        color: #475569 !important;
+      }
+
+      body.light-mode #services {
+        background: #ffffff !important;
+      }
+
+      body.light-mode #services h2,
+      body.light-mode #about h2,
+      body.light-mode #team h2,
+      body.light-mode #contact h2 {
+        color: #0f172a !important;
+      }
+
+      body.light-mode #services p,
+      body.light-mode #about p,
+      body.light-mode #team p,
+      body.light-mode #contact p {
+        color: #475569 !important;
+      }
+
+      body.light-mode .flip-card-inner {
+        background: #ffffff !important;
+        box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12) !important;
+      }
+
+      body.light-mode .flip-card-front {
+        background: #ffffff !important;
+      }
+
+      body.light-mode .flip-card-front h3 {
+        color: #0f172a !important;
+      }
+
+      body.light-mode .flip-card-back {
+        background: linear-gradient(
+          135deg,
+          #eff6ff 0%,
+          #f0f9ff 100%
+        ) !important;
+      }
+
+      body.light-mode .flip-card-back p {
+        color: #1e293b !important;
+      }
+
+      body.light-mode #about {
+        background: linear-gradient(180deg, #f9fafb 0%, #ffffff 50%) !important;
+      }
+
+      body.light-mode #contact {
+        background: linear-gradient(180deg, #ffffff 0%, #f9fafb 50%) !important;
+      }
+
+      body.light-mode #contactForm {
+        background: #ffffff !important;
+        border: 2px solid #e5e7eb !important;
+        box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12) !important;
+      }
+
+      body.light-mode #contactForm label {
+        color: #0f172a !important;
+      }
+
+      body.light-mode #contactForm input,
+      body.light-mode #contactForm textarea {
+        background: #f9fafb !important;
+        border: 2px solid #e5e7eb !important;
+        color: #0f172a !important;
+      }
+
+      body.light-mode #contactForm input::placeholder,
+      body.light-mode #contactForm textarea::placeholder {
+        color: #94a3af !important;
+      }
+
+      body.light-mode footer {
+        background: #ffffff !important;
+        border-top: 2px solid #e5e7eb !important;
+        color: #475569 !important;
+      }
+
+      body.light-mode footer span {
+        color: #475569 !important;
+      }
+
+      body.light-mode .service-icon-wrap {
+        background: #eff6ff !important;
+      }
+
+      body.light-mode .team-card-img {
+        background: #eff6ff !important;
+        color: #2563eb !important;
+        border: 3px solid #e5e7eb !important;
       }
 
       .gradient-text {
@@ -193,10 +333,12 @@
         justify-content: center;
         border-radius: 16px;
         padding: 28px;
+        border: 2px solid #000000;
       }
 
       .flip-card-back {
         transform: rotateY(180deg);
+        border: 2px solid #000000 !important;
       }
 
       @keyframes slideRight {
@@ -2046,6 +2188,35 @@
       renderTeam();
       lucide.createIcons();
 
+      // Theme toggle
+      const themeToggle = document.getElementById("themeToggle");
+      const preferredTheme = localStorage.getItem("theme") || "dark";
+
+      function applyTheme(theme) {
+        if (theme === "light") {
+          document.body.classList.add("light-mode");
+          themeToggle.innerHTML =
+            '<i data-lucide="sun" style="width:20px;height:20px;"></i>';
+          localStorage.setItem("theme", "light");
+        } else {
+          document.body.classList.remove("light-mode");
+          themeToggle.innerHTML =
+            '<i data-lucide="moon" style="width:20px;height:20px;"></i>';
+          localStorage.setItem("theme", "dark");
+        }
+        lucide.createIcons();
+      }
+
+      applyTheme(preferredTheme);
+
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = document.body.classList.contains("light-mode")
+          ? "light"
+          : "dark";
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+        applyTheme(newTheme);
+      });
+
       // Mobile menu
       document.getElementById("mobileMenuBtn").addEventListener("click", () => {
         document.getElementById("mobileMenu").classList.toggle("hidden");
@@ -2124,16 +2295,31 @@
       // Active nav highlighting
       function updateActiveNav() {
         const sections = ["home", "services", "about", "team", "contact"];
+        let activeSection = "home";
+
         sections.forEach((id) => {
           const element = document.getElementById(id);
-          const navLink = document.querySelector(`a[href="#${id}"]`);
-          if (element && navLink) {
+          if (element) {
             const rect = element.getBoundingClientRect();
-            if (rect.top <= 150 && rect.bottom >= 150) {
-              navLink.style.color = "#00e5a0";
+            if (rect.top <= 150) {
+              activeSection = id;
+            }
+          }
+        });
+
+        // Update all nav links
+        const isLightMode = document.body.classList.contains("light-mode");
+        const activeColor = isLightMode ? "#2563eb" : "#00e5a0";
+        const inactiveColor = isLightMode ? "#475569" : "#94a3b8";
+
+        sections.forEach((id) => {
+          const navLink = document.querySelector(`a[href="#${id}"]`);
+          if (navLink) {
+            if (id === activeSection) {
+              navLink.style.color = activeColor;
               navLink.style.fontWeight = "600";
             } else {
-              navLink.style.color = "#94a3b8";
+              navLink.style.color = inactiveColor;
               navLink.style.fontWeight = "500";
             }
           }
@@ -2141,7 +2327,15 @@
       }
 
       window.addEventListener("scroll", updateActiveNav);
+      window.addEventListener("load", updateActiveNav);
       updateActiveNav();
+
+      // Update nav colors when theme changes
+      const originalThemeToggle = themeToggle;
+      const originalClickHandler = themeToggle.onclick;
+      themeToggle.addEventListener("click", () => {
+        setTimeout(updateActiveNav, 50);
+      });
 
       // Element SDK
       const defaultConfig = {
@@ -2277,7 +2471,7 @@
           if (b) {
             var d = b.createElement("script");
             d.innerHTML =
-              "window.__CF$cv$params={r:'9ddc819f5335fed0',t:'MTc3Mzc1NTg0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+              "window.__CF$cv$params={r:'9ddc9322060384ac',t:'MTc3Mzc1NjU2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }

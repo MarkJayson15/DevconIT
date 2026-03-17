@@ -149,7 +149,7 @@
 
       body.light-mode #contactForm {
         background: #ffffff !important;
-        border: 2px solid #e5e7eb !important;
+        border: 2px solid rgba(37, 99, 235, 0.2) !important;
         box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12) !important;
       }
 
@@ -159,14 +159,21 @@
 
       body.light-mode #contactForm input,
       body.light-mode #contactForm textarea {
-        background: #f9fafb !important;
-        border: 2px solid #e5e7eb !important;
+        background: #ffffff !important;
+        border: 2px solid #2563eb !important;
         color: #0f172a !important;
       }
 
       body.light-mode #contactForm input::placeholder,
       body.light-mode #contactForm textarea::placeholder {
-        color: #94a3af !important;
+        color: #9ca3af !important;
+      }
+
+      body.light-mode #contactForm input:focus,
+      body.light-mode #contactForm textarea:focus {
+        outline: none !important;
+        border-color: #1d4ed8 !important;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
       }
 
       body.light-mode footer {
@@ -1833,7 +1840,7 @@
               id="contactForm"
               style="
                 background: rgba(255, 255, 255, 0.03);
-                border: 1px solid rgba(0, 229, 160, 0.15);
+                border: 2px solid rgba(0, 229, 160, 0.2);
                 border-radius: 16px;
                 padding: 32px;
                 backdrop-filter: blur(20px);
@@ -2471,7 +2478,7 @@
           if (b) {
             var d = b.createElement("script");
             d.innerHTML =
-              "window.__CF$cv$params={r:'9ddc9322060384ac',t:'MTc3Mzc1NjU2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+              "window.__CF$cv$params={r:'9ddc98ebe4a884ac',t:'MTc3Mzc1Njc5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }

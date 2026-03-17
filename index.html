@@ -56,11 +56,31 @@
           transform: translateY(-20px);
         }
       }
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
       .float-anim {
         animation: float 6s ease-in-out infinite;
       }
       .float-anim-delay {
         animation: float 6s ease-in-out 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          r: 3px;
+          opacity: 0.6;
+        }
+        50% {
+          r: 5px;
+          opacity: 0.3;
+        }
       }
 
       @keyframes fadeUp {
@@ -157,6 +177,51 @@
 
       .flip-card-back {
         transform: rotateY(180deg);
+      }
+
+      @keyframes slideRight {
+        0% {
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes slideDown {
+        0% {
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes slideLeft {
+        0% {
+          transform: translateX(0);
+          opacity: 0;
+        }
+        5% {
+          opacity: 1;
+        }
+        95% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
       }
     </style>
     <style>
@@ -256,81 +321,705 @@
     <!-- HERO -->
     <section
       id="home"
-      class="grid-bg relative w-full"
+      class="relative w-full"
       style="
         min-height: 100%;
         display: flex;
         align-items: center;
         padding-top: 100px;
+        background: linear-gradient(
+          135deg,
+          #0a0f1a 0%,
+          #0f1629 25%,
+          #0d1b2a 50%,
+          #0a0f1a 100%
+        );
+        overflow: hidden;
       "
     >
+      <!-- Animated gradient orbs -->
       <div
-        class="absolute top-20 right-10 w-72 h-72 rounded-full float-anim"
+        class="absolute top-20 right-10 w-96 h-96 rounded-full float-anim"
         style="
           background: radial-gradient(
             circle,
-            rgba(0, 229, 160, 0.12),
+            rgba(0, 229, 160, 0.15),
             transparent 70%
           );
+          filter: blur(40px);
         "
       ></div>
       <div
-        class="absolute bottom-20 left-10 w-56 h-56 rounded-full float-anim-delay"
+        class="absolute bottom-20 left-10 w-80 h-80 rounded-full float-anim-delay"
         style="
           background: radial-gradient(
             circle,
-            rgba(0, 180, 216, 0.1),
+            rgba(0, 180, 216, 0.12),
             transparent 70%
           );
+          filter: blur(40px);
         "
       ></div>
+      <div
+        class="absolute top-1/3 left-1/3 w-64 h-64 rounded-full"
+        style="
+          background: radial-gradient(
+            circle,
+            rgba(0, 229, 160, 0.08),
+            transparent 70%
+          );
+          filter: blur(50px);
+          animation: float 8s ease-in-out 1s infinite;
+        "
+      ></div>
+      <!-- Grid pattern -->
+      <div
+        class="absolute inset-0"
+        style="
+          background-image:
+            linear-gradient(rgba(0, 229, 160, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 229, 160, 0.03) 1px, transparent 1px);
+          background-size: 80px 80px;
+          pointer-events: none;
+        "
+      ></div>
+      <!-- Animated lines -->
+      <svg
+        class="absolute inset-0 w-full h-full"
+        style="pointer-events: none"
+        preserveaspectratio="none"
+      >
+        <defs>
+          <lineargradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color: #00e5a0; stop-opacity: 0.1" />
+            <stop
+              offset="100%"
+              style="stop-color: #00b4d8; stop-opacity: 0.05"
+            />
+          </lineargradient>
+        </defs>
+        <line
+          x1="0"
+          y1="30%"
+          x2="100%"
+          y2="30%"
+          stroke="url(#lineGrad1)"
+          stroke-width="1"
+          style="animation: slideRight 20s linear infinite"
+        />
+        <line
+          x1="0"
+          y1="60%"
+          x2="100%"
+          y2="60%"
+          stroke="url(#lineGrad1)"
+          stroke-width="1"
+          style="animation: slideRight 25s linear infinite 5s"
+        />
+        <line
+          x1="20%"
+          y1="0"
+          x2="20%"
+          y2="100%"
+          stroke="url(#lineGrad1)"
+          stroke-width="1"
+          style="animation: slideDown 20s linear infinite"
+        />
+        <line
+          x1="70%"
+          y1="0"
+          x2="70%"
+          y2="100%"
+          stroke="url(#lineGrad1)"
+          stroke-width="1"
+          style="animation: slideDown 25s linear infinite 5s"
+        />
+      </svg>
       <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
-        <div class="max-w-3xl">
-          <p
-            class="fade-up text-sm font-semibold tracking-widest uppercase mb-4"
-            style="color: #00e5a0"
-          >
-            Welcome to Devcon
-          </p>
-          <h1
-            id="heroTitle"
-            class="fade-up-d1 text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight"
-            style="color: #fff"
-          >
-            Building <span class="gradient-text">Digital Solutions</span> That
-            Matter
-          </h1>
-          <p
-            id="heroSubtitle"
-            class="fade-up-d2 mt-6 text-lg sm:text-xl leading-relaxed"
-            style="color: #94a3b8; max-width: 560px"
-          >
-            We craft innovative software—from web apps to mobile
-            platforms—empowering businesses and students to achieve more through
-            technology.
-          </p>
-          <div class="fade-up-d3 mt-10 flex flex-wrap gap-4">
-            <a
-              href="#services"
-              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:scale-105"
-              style="
-                background: linear-gradient(135deg, #00e5a0, #00b4d8);
-                color: #0a0f1a;
-              "
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+          <div>
+            <p
+              class="fade-up text-sm font-semibold tracking-widest uppercase mb-4"
+              style="color: #00e5a0"
             >
-              Our Services
-              <i
-                data-lucide="arrow-right"
-                style="width: 16px; height: 16px"
-              ></i>
-            </a>
-            <a
-              href="#about"
-              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:scale-105"
-              style="border: 1px solid rgba(0, 229, 160, 0.3); color: #00e5a0"
+              Welcome to Devcon
+            </p>
+            <h1
+              id="heroTitle"
+              class="fade-up-d1 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight relative"
+              style="color: #fff"
             >
-              Learn More
-            </a>
+              <svg
+                class="absolute -left-28 -top-8 w-40 h-40 opacity-70"
+                viewbox="0 0 200 200"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style="animation: float 8s ease-in-out infinite"
+              >
+                <defs>
+                  <lineargradient
+                    id="techGrad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop
+                      offset="0%"
+                      style="stop-color: #00e5a0; stop-opacity: 0.8"
+                    />
+                    <stop
+                      offset="100%"
+                      style="stop-color: #00b4d8; stop-opacity: 0.6"
+                    />
+                  </lineargradient>
+                </defs>
+                <!-- Tech circuit paths -->
+                <path
+                  d="M 40 40 L 100 40 L 100 100 L 40 100 Z"
+                  stroke="url(#techGrad)"
+                  stroke-width="2"
+                  opacity="0.5"
+                />
+                <circle cx="40" cy="40" r="4" fill="#00e5a0" opacity="0.8" />
+                <circle cx="100" cy="40" r="4" fill="#00b4d8" opacity="0.8" />
+                <circle cx="100" cy="100" r="4" fill="#00e5a0" opacity="0.8" />
+                <circle cx="40" cy="100" r="4" fill="#00b4d8" opacity="0.8" />
+                <!-- Inner circuit lines -->
+                <line
+                  x1="40"
+                  y1="70"
+                  x2="100"
+                  y2="70"
+                  stroke="#00e5a0"
+                  stroke-width="1.5"
+                  opacity="0.4"
+                />
+                <line
+                  x1="70"
+                  y1="40"
+                  x2="70"
+                  y2="100"
+                  stroke="#00b4d8"
+                  stroke-width="1.5"
+                  opacity="0.4"
+                />
+                <!-- Floating dots -->
+                <circle
+                  cx="55"
+                  cy="55"
+                  r="3"
+                  fill="#00e5a0"
+                  opacity="0.6"
+                  style="animation: pulse 2s ease-in-out infinite"
+                />
+                <circle
+                  cx="85"
+                  cy="85"
+                  r="3"
+                  fill="#00b4d8"
+                  opacity="0.6"
+                  style="animation: pulse 2s ease-in-out 0.5s infinite"
+                />
+                <!-- Top right connection -->
+                <path
+                  d="M 130 30 L 160 30 L 160 80"
+                  stroke="url(#techGrad)"
+                  stroke-width="2"
+                  opacity="0.4"
+                />
+                <circle cx="160" cy="30" r="3" fill="#00e5a0" opacity="0.7" />
+                <!-- Bottom left connection -->
+                <path
+                  d="M 20 120 L 20 160 L 60 160"
+                  stroke="url(#techGrad)"
+                  stroke-width="2"
+                  opacity="0.4"
+                />
+                <circle cx="20" cy="160" r="3" fill="#00b4d8" opacity="0.7" />
+                <!-- Central hexagon -->
+                <path
+                  d="M 100 50 L 115 60 L 115 80 L 100 90 L 85 80 L 85 60 Z"
+                  stroke="#00e5a0"
+                  stroke-width="1.5"
+                  fill="none"
+                  opacity="0.5"
+                />
+              </svg>
+              Building <span class="gradient-text">Digital Solutions</span> That
+              Matter
+            </h1>
+            <p
+              id="heroSubtitle"
+              class="fade-up-d2 mt-6 text-lg sm:text-xl leading-relaxed"
+              style="color: #94a3b8; max-width: 560px"
+            >
+              We craft innovative software—from web apps to mobile
+              platforms—empowering businesses and students to achieve more
+              through technology.
+            </p>
+            <div class="fade-up-d3 mt-10 flex flex-wrap gap-4">
+              <a
+                href="#services"
+                class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:scale-105"
+                style="
+                  background: linear-gradient(135deg, #00e5a0, #00b4d8);
+                  color: #0a0f1a;
+                "
+              >
+                Our Services
+                <i
+                  data-lucide="arrow-right"
+                  style="width: 16px; height: 16px"
+                ></i>
+              </a>
+              <a
+                href="#about"
+                class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:scale-105"
+                style="border: 1px solid rgba(0, 229, 160, 0.3); color: #00e5a0"
+              >
+                Learn More
+              </a>
+            </div>
+          </div>
+          <!-- Right side vector design - ENHANCED -->
+          <div
+            class="hidden lg:flex items-center justify-center w-full h-96"
+            style="pointer-events: none"
+          >
+            <svg
+              class="w-full max-w-md h-full opacity-85"
+              viewbox="0 0 500 600"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style="animation: float 8s ease-in-out infinite"
+            >
+              <defs>
+                <lineargradient
+                  id="rightGrad1"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style="stop-color: #00e5a0; stop-opacity: 0.8"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #00b4d8; stop-opacity: 0.6"
+                  />
+                </lineargradient>
+                <lineargradient
+                  id="rightGrad2"
+                  x1="100%"
+                  y1="0%"
+                  x2="0%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style="stop-color: #00b4d8; stop-opacity: 0.7"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #00e5a0; stop-opacity: 0.5"
+                  />
+                </lineargradient>
+                <lineargradient
+                  id="rightGrad3"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style="stop-color: #00e5a0; stop-opacity: 1"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #00b4d8; stop-opacity: 0.8"
+                  />
+                </lineargradient>
+                <filter id="glow2">
+                  <fegaussianblur stddeviation="4" result="coloredBlur" />
+                  <femerge>
+                    <femergenode in="coloredBlur" />
+                    <femergenode in="SourceGraphic" />
+                  </femerge>
+                </filter>
+                <filter id="strongGlow">
+                  <fegaussianblur stddeviation="6" result="coloredBlur" />
+                  <femerge>
+                    <femergenode in="coloredBlur" />
+                    <femergenode in="SourceGraphic" />
+                  </femerge>
+                </filter>
+              </defs>
+              <!-- Background layers of circles -->
+              <circle
+                cx="250"
+                cy="300"
+                r="200"
+                stroke="url(#rightGrad1)"
+                stroke-width="1.5"
+                fill="none"
+                opacity="0.2"
+              />
+              <circle
+                cx="250"
+                cy="300"
+                r="160"
+                stroke="url(#rightGrad2)"
+                stroke-width="1.5"
+                fill="none"
+                opacity="0.25"
+                style="animation: rotate 20s linear infinite"
+              />
+              <circle
+                cx="250"
+                cy="300"
+                r="120"
+                stroke="url(#rightGrad1)"
+                stroke-width="2"
+                fill="none"
+                opacity="0.35"
+                style="animation: rotate 15s linear infinite reverse"
+              />
+              <circle
+                cx="250"
+                cy="300"
+                r="80"
+                stroke="url(#rightGrad2)"
+                stroke-width="2"
+                fill="none"
+                opacity="0.4"
+                style="animation: rotate 10s linear infinite"
+              />
+              <!-- Outer ring of rotating nodes -->
+              <g style="animation: rotate 30s linear infinite">
+                <circle
+                  cx="400"
+                  cy="150"
+                  r="8"
+                  fill="#00e5a0"
+                  filter="url(#glow2)"
+                />
+                <line
+                  x1="250"
+                  y1="300"
+                  x2="400"
+                  y2="150"
+                  stroke="url(#rightGrad1)"
+                  stroke-width="1"
+                  opacity="0.3"
+                />
+              </g>
+              <g style="animation: rotate 30s linear infinite 0.25s">
+                <circle
+                  cx="430"
+                  cy="300"
+                  r="8"
+                  fill="#00b4d8"
+                  filter="url(#glow2)"
+                />
+                <line
+                  x1="250"
+                  y1="300"
+                  x2="430"
+                  y2="300"
+                  stroke="url(#rightGrad2)"
+                  stroke-width="1"
+                  opacity="0.3"
+                />
+              </g>
+              <g style="animation: rotate 30s linear infinite 0.5s">
+                <circle
+                  cx="350"
+                  cy="450"
+                  r="8"
+                  fill="#00e5a0"
+                  filter="url(#glow2)"
+                />
+                <line
+                  x1="250"
+                  y1="300"
+                  x2="350"
+                  y2="450"
+                  stroke="url(#rightGrad1)"
+                  stroke-width="1"
+                  opacity="0.3"
+                />
+              </g>
+              <g style="animation: rotate 30s linear infinite 0.75s">
+                <circle
+                  cx="150"
+                  cy="450"
+                  r="8"
+                  fill="#00b4d8"
+                  filter="url(#glow2)"
+                />
+                <line
+                  x1="250"
+                  y1="300"
+                  x2="150"
+                  y2="450"
+                  stroke="url(#rightGrad2)"
+                  stroke-width="1"
+                  opacity="0.3"
+                />
+              </g>
+              <g style="animation: rotate 30s linear infinite 1s">
+                <circle
+                  cx="70"
+                  cy="300"
+                  r="8"
+                  fill="#00e5a0"
+                  filter="url(#glow2)"
+                />
+                <line
+                  x1="250"
+                  y1="300"
+                  x2="70"
+                  y2="300"
+                  stroke="url(#rightGrad1)"
+                  stroke-width="1"
+                  opacity="0.3"
+                />
+              </g>
+              <g style="animation: rotate 30s linear infinite 1.25s">
+                <circle
+                  cx="150"
+                  cy="150"
+                  r="8"
+                  fill="#00b4d8"
+                  filter="url(#glow2)"
+                />
+                <line
+                  x1="250"
+                  y1="300"
+                  x2="150"
+                  y2="150"
+                  stroke="url(#rightGrad2)"
+                  stroke-width="1"
+                  opacity="0.3"
+                />
+              </g>
+              <!-- Middle layer nodes with pulsing effect -->
+              <g filter="url(#glow2)">
+                <circle
+                  cx="250"
+                  cy="150"
+                  r="6"
+                  fill="#00e5a0"
+                  opacity="0.8"
+                  style="animation: pulse 2.5s ease-in-out infinite"
+                />
+                <circle
+                  cx="350"
+                  cy="250"
+                  r="6"
+                  fill="#00b4d8"
+                  opacity="0.8"
+                  style="animation: pulse 2.5s ease-in-out 0.3s infinite"
+                />
+                <circle
+                  cx="350"
+                  cy="350"
+                  r="6"
+                  fill="#00e5a0"
+                  opacity="0.8"
+                  style="animation: pulse 2.5s ease-in-out 0.6s infinite"
+                />
+                <circle
+                  cx="250"
+                  cy="450"
+                  r="6"
+                  fill="#00b4d8"
+                  opacity="0.8"
+                  style="animation: pulse 2.5s ease-in-out 0.9s infinite"
+                />
+                <circle
+                  cx="150"
+                  cy="350"
+                  r="6"
+                  fill="#00e5a0"
+                  opacity="0.8"
+                  style="animation: pulse 2.5s ease-in-out 1.2s infinite"
+                />
+                <circle
+                  cx="150"
+                  cy="250"
+                  r="6"
+                  fill="#00b4d8"
+                  opacity="0.8"
+                  style="animation: pulse 2.5s ease-in-out 1.5s infinite"
+                />
+              </g>
+              <!-- Connecting lines between middle nodes -->
+              <line
+                x1="250"
+                y1="150"
+                x2="350"
+                y2="250"
+                stroke="url(#rightGrad1)"
+                stroke-width="1"
+                opacity="0.25"
+              />
+              <line
+                x1="350"
+                y1="250"
+                x2="350"
+                y2="350"
+                stroke="url(#rightGrad2)"
+                stroke-width="1"
+                opacity="0.25"
+              />
+              <line
+                x1="350"
+                y1="350"
+                x2="250"
+                y2="450"
+                stroke="url(#rightGrad1)"
+                stroke-width="1"
+                opacity="0.25"
+              />
+              <line
+                x1="250"
+                y1="450"
+                x2="150"
+                y2="350"
+                stroke="url(#rightGrad2)"
+                stroke-width="1"
+                opacity="0.25"
+              />
+              <line
+                x1="150"
+                y1="350"
+                x2="150"
+                y2="250"
+                stroke="url(#rightGrad1)"
+                stroke-width="1"
+                opacity="0.25"
+              />
+              <line
+                x1="150"
+                y1="250"
+                x2="250"
+                y2="150"
+                stroke="url(#rightGrad2)"
+                stroke-width="1"
+                opacity="0.25"
+              />
+              <!-- Central core element - enhanced hexagon -->
+              <g style="animation: float 8s ease-in-out 1s infinite">
+                <circle
+                  cx="250"
+                  cy="300"
+                  r="35"
+                  fill="rgba(0,229,160,0.08)"
+                  stroke="url(#rightGrad3)"
+                  stroke-width="2"
+                />
+                <path
+                  d="M 250 265 L 275 280 L 275 310 L 250 325 L 225 310 L 225 280 Z"
+                  stroke="url(#rightGrad1)"
+                  stroke-width="2"
+                  fill="rgba(0,229,160,0.1)"
+                />
+                <circle
+                  cx="250"
+                  cy="300"
+                  r="12"
+                  fill="url(#rightGrad3)"
+                  opacity="0.7"
+                  filter="url(#strongGlow)"
+                  style="animation: pulse 1.8s ease-in-out infinite"
+                />
+                <circle cx="250" cy="300" r="7" fill="#00e5a0" opacity="0.9" />
+              </g>
+              <!-- Orbital squares/rectangles -->
+              <g style="animation: rotate 25s linear infinite reverse">
+                <rect
+                  x="200"
+                  y="80"
+                  width="40"
+                  height="40"
+                  stroke="url(#rightGrad2)"
+                  stroke-width="1.5"
+                  fill="none"
+                  opacity="0.35"
+                />
+                <rect
+                  x="380"
+                  y="380"
+                  width="50"
+                  height="50"
+                  stroke="url(#rightGrad1)"
+                  stroke-width="1.5"
+                  fill="none"
+                  opacity="0.3"
+                />
+                <rect
+                  x="100"
+                  y="350"
+                  width="35"
+                  height="35"
+                  stroke="url(#rightGrad2)"
+                  stroke-width="1.5"
+                  fill="none"
+                  opacity="0.3"
+                />
+              </g>
+              <!-- Flowing data streams -->
+              <polyline
+                points="80,200 150,250 250,300 350,350 420,400"
+                stroke="url(#rightGrad1)"
+                stroke-width="1.5"
+                fill="none"
+                opacity="0.2"
+                stroke-dasharray="5,5"
+                style="animation: slideRight 8s linear infinite"
+              />
+              <polyline
+                points="100,400 180,350 250,300 320,250 400,150"
+                stroke="url(#rightGrad2)"
+                stroke-width="1.5"
+                fill="none"
+                opacity="0.15"
+                stroke-dasharray="5,5"
+                style="animation: slideLeft 10s linear infinite"
+              />
+              <!-- Tech sparkles -->
+              <g filter="url(#strongGlow)">
+                <circle
+                  cx="320"
+                  cy="180"
+                  r="4"
+                  fill="#00e5a0"
+                  opacity="0.6"
+                  style="animation: pulse 3s ease-in-out 0.2s infinite"
+                />
+                <circle
+                  cx="200"
+                  cy="500"
+                  r="3"
+                  fill="#00b4d8"
+                  opacity="0.5"
+                  style="animation: pulse 3s ease-in-out 0.8s infinite"
+                />
+                <circle
+                  cx="420"
+                  cy="350"
+                  r="3.5"
+                  fill="#00e5a0"
+                  opacity="0.55"
+                  style="animation: pulse 3s ease-in-out 1.5s infinite"
+                />
+              </g>
+            </svg>
           </div>
         </div>
       </div>
@@ -825,7 +1514,7 @@
             >Devcon IT Solutions</span
           >
         </div>
-        <p>© 2026 Devcon IT Solutions. All rights reserved.</p>
+        <p>© 2024 Devcon IT Solutions. All rights reserved.</p>
       </div>
     </footer>
     <script>
@@ -872,7 +1561,8 @@
         {
           name: "Mark Jayson S. Austria",
           role: "Lead Developer/Founder",
-          image: "https://drive.google.com/thumbnail?id=1_149Q_-kW6XLDqxKFngJBcqBxB0zTiuG",
+          image:
+            "https://drive.google.com/thumbnail?id=1_149Q_-kW6XLDqxKFngJBcqBxB0zTiuG",
           color: "#00e5a0",
         },
         {
@@ -919,7 +1609,7 @@
         },
         {
           name: "Aron James M. Carandang",
-          role: "Quality Control ",
+          role: "Quality Control",
           image: null,
           color: "#00e5a0",
         },
@@ -931,7 +1621,7 @@
         },
         {
           name: "MJ Kelvin B. Magno",
-          role: "Quality Assurance ",
+          role: "Quality Assurance",
           image: null,
           color: "#00e5a0",
         },
@@ -970,7 +1660,7 @@
         <div class="flip-card-inner" style="background:rgba(255,255,255,0.03);border:1px solid ${t.color}18;">
           <div class="flip-card-front" style="background:rgba(255,255,255,0.03);justify-content:center;">
             <div class="team-card-img mx-auto mb-4" style="background:${t.color}18;color:${t.color};overflow:hidden;">
-              ${t.image ? `<img src="${t.image}" alt="${t.name}" style="width:100%;height:100%;object-fit:cover;">` : `<div style="font-size:3rem;">👤</div>`}
+              ${t.image ? `<img src="${t.image}" alt="${t.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="console.error('Image failed to load:', this.src); this.style.background='#e5e7eb'; this.alt='Image unavailable';">` : `<div style="font-size:3rem;">👤</div>`}
             </div>
             <h3 class="font-bold text-lg" style="color:#fff;">${t.name}</h3>
           </div>
@@ -1222,7 +1912,7 @@
           if (b) {
             var d = b.createElement("script");
             d.innerHTML =
-              "window.__CF$cv$params={r:'9ddb85a9d59a402d',t:'MTc3Mzc0NTUyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+              "window.__CF$cv$params={r:'9ddc731ff486fed0',t:'MTc3Mzc1NTI0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }

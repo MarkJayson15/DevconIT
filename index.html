@@ -29,8 +29,28 @@
         scroll-behavior: smooth;
       }
 
+      :root {
+        --bg-primary: #0a0f1a;
+        --bg-secondary: #111827;
+        --text-primary: #e2e8f0;
+        --text-secondary: #94a3b8;
+        --accent-1: #00e5a0;
+        --accent-2: #00b4d8;
+        --border-color: rgba(0, 229, 160, 0.1);
+      }
+
+      body.light-mode {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --accent-1: #00b86f;
+        --accent-2: #0084d4;
+        --border-color: rgba(0, 132, 212, 0.1);
+      }
+
       .gradient-text {
-        background: linear-gradient(135deg, #00e5a0, #00b4d8);
+        background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -277,33 +297,54 @@
           >
         </div>
         <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#home" style="color: #00e5a0">Home</a>
+          <a href="#home" style="color: var(--accent-1)">Home</a>
           <a
             href="#services"
             class="hover:text-white transition"
-            style="color: #94a3b8"
+            style="color: var(--text-secondary)"
             >Services</a
           >
           <a
             href="#about"
             class="hover:text-white transition"
-            style="color: #94a3b8"
+            style="color: var(--text-secondary)"
             >About</a
           >
           <a
             href="#team"
             class="hover:text-white transition"
-            style="color: #94a3b8"
+            style="color: var(--text-secondary)"
             >Team</a
           >
           <a
             href="#contact"
             class="hover:text-white transition"
-            style="color: #94a3b8"
+            style="color: var(--text-secondary)"
             >Contact</a
           >
         </div>
-        <button id="mobileMenuBtn" class="md:hidden" style="color: #00e5a0">
+        <button
+          id="themeToggle"
+          style="
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(0, 229, 160, 0.1);
+            border: 1px solid var(--border-color);
+            color: var(--accent-1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+          "
+        >
+          <i data-lucide="moon" style="width: 20px; height: 20px"></i></button
+        ><button
+          id="mobileMenuBtn"
+          class="md:hidden"
+          style="color: var(--accent-1)"
+        >
           <i data-lucide="menu" style="width: 24px; height: 24px"></i>
         </button>
       </div>
@@ -311,11 +352,11 @@
         id="mobileMenu"
         class="hidden md:hidden px-6 pb-4 flex flex-col gap-3 text-sm font-medium"
       >
-        <a href="#home" style="color: #00e5a0">Home</a>
-        <a href="#services" style="color: #94a3b8">Services</a>
-        <a href="#about" style="color: #94a3b8">About</a>
-        <a href="#team" style="color: #94a3b8">Team</a>
-        <a href="#contact" style="color: #94a3b8">Contact</a>
+        <a href="#home" style="color: var(--accent-1)">Home</a>
+        <a href="#services" style="color: var(--text-secondary)">Services</a>
+        <a href="#about" style="color: var(--text-secondary)">About</a>
+        <a href="#team" style="color: var(--text-secondary)">Team</a>
+        <a href="#contact" style="color: var(--text-secondary)">Contact</a>
       </div>
     </nav>
     <!-- HERO -->
@@ -1826,7 +1867,7 @@
             >Devcon IT Solutions</span
           >
         </div>
-        <p>© 2026 Devcon IT Solutions. All rights reserved.</p>
+        <p>© 2024 Devcon IT Solutions. All rights reserved.</p>
       </div>
     </footer>
     <script>
@@ -2236,7 +2277,7 @@
           if (b) {
             var d = b.createElement("script");
             d.innerHTML =
-              "window.__CF$cv$params={r:'9ddc7bcb1298fed0',t:'MTc3Mzc1NTYwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+              "window.__CF$cv$params={r:'9ddc819f5335fed0',t:'MTc3Mzc1NTg0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }
